@@ -1,0 +1,42 @@
+// sum_even.h
+#ifndef SUM_EVEN_H
+#define SUM_EVEN_H
+
+int sumEven(int* arr, int size, bool (*isEven)(int));
+bool isEven(int num);
+
+#endif // SUM_EVEN_H
+
+
+
+
+
+
+// main.cpp
+#include <iostream>
+#include "sum_even.h"
+
+int sumEven(int* arr, int size, bool (*isEven)(int)) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        if (isEven(arr[i])) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+bool isEven(int num) {
+    return num % 2 == 0;
+}
+
+int main() {
+    int arr[] = {3, 5, 2, 8, 6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int sum = sumEven(arr, size, isEven);
+    
+    std::cout << "Сумма четных чисел в массиве: " << sum << std::endl;
+
+    return 0;
+}
